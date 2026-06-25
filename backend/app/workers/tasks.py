@@ -2,6 +2,7 @@ from app.workers.celery_app import celery
 from app.core.database import SessionLocal
 from app.db.models import Request
 from app.services.orchestrator import run_pipeline
+from app.api.metrics import counter
 
 
 @celery.task
@@ -34,6 +35,8 @@ def process_request(
             "route"
         ]
     )
+
+    counter[req.route] += 1
 
     req.status = (
         "COMPLETED"

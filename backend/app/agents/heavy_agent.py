@@ -16,19 +16,19 @@ class HeavyAgent:
 
         prompt=f"""
 
-Analyze deeply.
+Analyze.
 
 Input:
-
 {state.content}
 
-Provide:
+Return JSON:
 
-Summary
+summary:
+priority:
+actions:
 
-Priority
-
-Actions
+Limit:
+150 words
 
 """
 

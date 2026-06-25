@@ -14,8 +14,6 @@ def result(
 ):
     req = get_result(db, request_id)
     return {
-        "request_id": req.id,
-        "status": req.status,
         "route": req.route,
         "output": req.output
     }

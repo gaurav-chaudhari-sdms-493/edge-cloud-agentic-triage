@@ -4,29 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="temp">
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/complexity_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/formatter_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/heavy_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/input_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/light_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/privacy_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/router_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/api/result.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/api/triage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/core/config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/core/database.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/db/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/schemas/triage.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/services/llm_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/services/log_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/services/orchestrator.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/services/result_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/services/triage_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/workers/tasks.py" afterDir="false" />
+    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="Implemented The required problem statement.">
+      <change afterPath="$PROJECT_DIR$/backend/app/api/metrics.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/services/metrics_service.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/recreate_db.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/formatter_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/formatter_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/heavy_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/heavy_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/privacy_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/privacy_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/router_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/router_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/api/result.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/result.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/services/llm_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/llm_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/services/orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/orchestrator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/workers/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/workers/tasks.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,61 +48,61 @@
 }</component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.2938817094705193" />
-      <entry key="MS500" value="3.137038893910482" />
-      <entry key="S2" value="4.401506505193439" />
-      <entry key="S5" value="4.7473203556596575" />
-      <entry key="S10" value="4.876288765113751" />
-      <entry key="S30" value="5.383925177345868" />
-      <entry key="S60" value="6.284673400638678" />
-      <entry key="M2" value="7.2760873695166195" />
-      <entry key="M5" value="8.447987862656536" />
-      <entry key="M10" value="12.496850099315218" />
-      <entry key="M15" value="20.26458972577124" />
-      <entry key="M30" value="49.805351733150545" />
-      <entry key="H1" value="99.04072639443834" />
-      <entry key="H2" value="151.76174095512033" />
-      <entry key="H4" value="192.39308678205924" />
-      <entry key="D1" value="237.44669027776453" />
-      <entry key="W1" value="246.4570500577777" />
+      <entry key="MS100" value="1.0000084435610022" />
+      <entry key="MS500" value="1.1460788133196562" />
+      <entry key="S2" value="2.8257376365177582" />
+      <entry key="S5" value="5.428897946239744" />
+      <entry key="S10" value="7.691125372917497" />
+      <entry key="S30" value="10.227106200023497" />
+      <entry key="S60" value="11.061747845090734" />
+      <entry key="M2" value="11.517316311465997" />
+      <entry key="M5" value="11.946573874224635" />
+      <entry key="M10" value="13.528107802116047" />
+      <entry key="M15" value="17.139444526979634" />
+      <entry key="M30" value="37.20976189225394" />
+      <entry key="H1" value="82.4925189535035" />
+      <entry key="H2" value="140.0412250147652" />
+      <entry key="H4" value="188.7205648168229" />
+      <entry key="D1" value="246.10793863409594" />
+      <entry key="W1" value="257.9589816469489" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="4.575984875679174E-277" />
-      <entry key="MS500" value="5.39631031797532E-56" />
-      <entry key="S2" value="1.5241377821239762E-14" />
-      <entry key="S5" value="2.9731011959230823E-6" />
-      <entry key="S10" value="0.0017242683074055153" />
-      <entry key="S30" value="0.11991355597077043" />
-      <entry key="S60" value="0.3462858745489532" />
-      <entry key="M2" value="0.5891720113547283" />
-      <entry key="M5" value="0.8639600328810727" />
-      <entry key="M10" value="1.1340725747565643" />
-      <entry key="M15" value="1.3127241009473227" />
-      <entry key="M30" value="1.6047674294946344" />
-      <entry key="H1" value="1.9184548244008577" />
-      <entry key="H2" value="2.2654835656235393" />
-      <entry key="H4" value="2.5599308874337052" />
-      <entry key="D1" value="2.913397363242422" />
-      <entry key="W1" value="2.987252244541789" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="3.6247124962631596E-280" />
+      <entry key="S5" value="1.673822594607361E-112" />
+      <entry key="S10" value="1.2937629592036403E-56" />
+      <entry key="S30" value="2.3475683065586845E-19" />
+      <entry key="S60" value="4.845178197959385E-10" />
+      <entry key="M2" value="2.2038376408961625E-5" />
+      <entry key="M5" value="0.014644301036040292" />
+      <entry key="M10" value="0.14764826426731664" />
+      <entry key="M15" value="0.33720845646747627" />
+      <entry key="M30" value="0.8133446242038611" />
+      <entry key="H1" value="1.365786534285511" />
+      <entry key="H2" value="1.9115098525747276" />
+      <entry key="H4" value="2.351451647613976" />
+      <entry key="D1" value="2.8724403906337357" />
+      <entry key="W1" value="2.9812164620070734" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.254198866035433" />
-      <entry key="MS500" value="3.1185203624880216" />
-      <entry key="S2" value="4.394860703936309" />
-      <entry key="S5" value="4.744438918490666" />
-      <entry key="S10" value="4.87638544729418" />
-      <entry key="S30" value="5.499867567815895" />
-      <entry key="S60" value="6.625658974099636" />
-      <entry key="M2" value="7.860820955746364" />
-      <entry key="M5" value="9.309329917465977" />
-      <entry key="M10" value="13.62896389769591" />
-      <entry key="M15" value="21.575476439658228" />
-      <entry key="M30" value="51.40837864386013" />
-      <entry key="H1" value="100.95767833753689" />
-      <entry key="H2" value="154.02613612063445" />
-      <entry key="H4" value="194.95234243871806" />
-      <entry key="D1" value="240.35995065075943" />
-      <entry key="W1" value="249.44428202951062" />
+      <entry key="MS100" value="0.9075271429154662" />
+      <entry key="MS500" value="1.1249708079768497" />
+      <entry key="S2" value="2.812857000517659" />
+      <entry key="S5" value="5.417304605943998" />
+      <entry key="S10" value="7.681997179084594" />
+      <entry key="S30" value="10.222702172602549" />
+      <entry key="S60" value="11.059312062618586" />
+      <entry key="M2" value="11.51605568513846" />
+      <entry key="M5" value="11.960644433471726" />
+      <entry key="M10" value="13.67523356137982" />
+      <entry key="M15" value="17.476002048606855" />
+      <entry key="M30" value="38.02213457694534" />
+      <entry key="H1" value="83.85719058120155" />
+      <entry key="H2" value="141.95179401843032" />
+      <entry key="H4" value="191.07138496537573" />
+      <entry key="D1" value="248.9802420831758" />
+      <entry key="W1" value="260.9401776089295" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -245,7 +236,7 @@
       <workItem from="1782377786682" duration="5293000" />
       <workItem from="1782383192957" duration="1841000" />
       <workItem from="1782385159592" duration="3047000" />
-      <workItem from="1782390207023" duration="4817000" />
+      <workItem from="1782390207023" duration="7071000" />
     </task>
     <task id="LOCAL-00001" summary="Base environment has been initialized by installing and setup of postgres, celery.&#10;Created connection: backend with postgres.">
       <option name="closed" value="true" />
@@ -263,16 +254,36 @@
       <option name="project" value="LOCAL" />
       <updated>1782389064069</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Implemented The required problem statement.">
+      <option name="closed" value="true" />
+      <created>1782395227712</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1782395227712</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Base environment has been initialized by installing and setup of postgres, celery.&#10;Created connection: backend with postgres." />
     <MESSAGE value="temp" />
-    <option name="LAST_COMMIT_MESSAGE" value="temp" />
+    <MESSAGE value="Implemented The required problem statement." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented The required problem statement." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

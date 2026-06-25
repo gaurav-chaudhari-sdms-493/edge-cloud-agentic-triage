@@ -12,12 +12,29 @@ class PrivacyAgent:
             "privacy"
         )
 
-        state.content=(
-            re.sub(
-                r"\d",
-                "*",
-                state.content
-            )
+        patterns=[
+
+            r"\\d{10}",
+
+            r"\\S+@\\S+"
+
+        ]
+
+        sensitive=False
+
+        for p in patterns:
+
+            if (
+                re.search(
+                    p,
+                    state.content
+                )
+            ):
+
+                sensitive=True
+
+        state.contains_sensitive=(
+            sensitive
         )
 
         return state

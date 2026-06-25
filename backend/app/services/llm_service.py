@@ -5,24 +5,32 @@ def generate(
     model,
     prompt
 ):
+    try:
+        res=ollama.chat(
 
-    res=ollama.chat(
+            model=model,
 
-        model=model,
+            options={
 
-        messages=[
+                "temperature":0.2,
 
-            {
-                "role":"user",
+                "num_predict":180
 
-                "content":prompt
-            }
+            },
 
-        ]
+            messages=[
+                {
+                    "role":"user",
+                    "content":prompt
+                }
 
-    )
+            ]
 
-    return (
-        res["message"]
-        ["content"]
-    )
+        )
+
+        return (
+            res["message"]
+            ["content"]
+        )
+    except:
+        return "model timeout"

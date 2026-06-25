@@ -21,3 +21,9 @@ class AgentState:
     current_agent:str=None
     
     latency_ms:int=0
+
+    contains_sensitive:bool=False
+
+    estimated_cost:int=0
+
+    escalated:bool=False

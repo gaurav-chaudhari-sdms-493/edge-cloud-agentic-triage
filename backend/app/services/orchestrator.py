@@ -36,6 +36,9 @@ def run_pipeline(req):
             LightAgent()
             .run(state)
         )
+        if len(state.output) < 40:
+            state.route = "heavy"
+            state = HeavyAgent().run(state)
 
     else:
         state=(

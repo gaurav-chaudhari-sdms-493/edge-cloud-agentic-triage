@@ -6,8 +6,8 @@ Base = declarative_base()
 
 class Request(Base):
     """
-    Represents an incoming request before processing. This is now a lightweight
-    record, as the detailed processing trail is captured in the AuditLog.
+    Represents an incoming request. It holds the live status and progress
+    of the request as it moves through the agent pipeline.
     """
     __tablename__ = "requests"
 
@@ -15,6 +15,11 @@ class Request(Base):
     input_type = Column(String)
     content = Column(Text)
     status = Column(String, default="QUEUED")
+    
+    # New fields for live progress tracking
+    current_agent = Column(String, nullable=True)
+    progress = Column(Integer, default=0)
+    
     # The final output is stored here after processing
     output = Column(JSON, nullable=True)
 
@@ -30,7 +35,6 @@ class AuditLog(Base):
     request_id = Column(Integer, nullable=False)
     timestamp = Column(DateTime(timezone=True), server_default=func.now())
     
-    # Key metadata for audit
     contains_pii = Column(Boolean)
     detected_entities = Column(JSON)
     intent = Column(String)
@@ -39,10 +43,6 @@ class AuditLog(Base):
     route = Column(String)
     model_used = Column(String)
     latency_ms = Column(Integer)
-    status = Column(String) # e.g., "completed", "failed"
-    
-    # The final result for easy access
+    status = Column(String)
     final_result = Column(JSON)
-    
-    # The full execution path for explainability
     execution_path = Column(JSON)

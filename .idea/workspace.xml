@@ -4,10 +4,20 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="feat: add OCR agent for image handling and enhance triage pipeline with file support">
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/urgency_assignment_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/medical_complexity_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/medical_complexity_agent.py" afterDir="false" />
+    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="feat: enhance triage pipeline with urgency assignment agent and complexity improvements">
+      <change afterPath="$PROJECT_DIR$/mobile/lib/core/api/api_constants.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/core/constants/constants.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/core/theme/app_theme.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/models/request.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/models/response.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/screens/home/home_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/screens/processing/processing_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/screens/result/result_screen.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mobile/lib/services/api_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/api/status.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/api/status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/db/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/db/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/services/orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/orchestrator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +26,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="9284" />
+    <option name="cachedIndexableFilesCount" value="10328" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -47,61 +57,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.4022250610906941" />
-      <entry key="MS500" value="3.271897841384981" />
-      <entry key="S2" value="5.347586879545039" />
-      <entry key="S5" value="6.2277288148462215" />
-      <entry key="S10" value="6.591739178726549" />
-      <entry key="S30" value="6.858605413544102" />
-      <entry key="S60" value="6.928628279791655" />
-      <entry key="M2" value="6.9799765981651545" />
-      <entry key="M5" value="8.266800577319263" />
-      <entry key="M10" value="13.022455853905505" />
-      <entry key="M15" value="17.605572470211037" />
-      <entry key="M30" value="28.685798365861846" />
-      <entry key="H1" value="53.492383908448176" />
-      <entry key="H2" value="107.086172850484" />
-      <entry key="H4" value="174.8507365569496" />
-      <entry key="D1" value="281.73858641274995" />
-      <entry key="W1" value="307.44721544892343" />
+      <entry key="MS100" value="1.503502641914733" />
+      <entry key="MS500" value="2.1520947278538873" />
+      <entry key="S2" value="4.797289451083949" />
+      <entry key="S5" value="8.203761456695819" />
+      <entry key="S10" value="10.99427410858925" />
+      <entry key="S30" value="13.982551699545308" />
+      <entry key="S60" value="14.938974275515719" />
+      <entry key="M2" value="15.470641309630594" />
+      <entry key="M5" value="17.03238652724029" />
+      <entry key="M10" value="21.853113958082567" />
+      <entry key="M15" value="26.459298685725994" />
+      <entry key="M30" value="37.572343595321904" />
+      <entry key="H1" value="62.39057405539715" />
+      <entry key="H2" value="115.98657721034941" />
+      <entry key="H4" value="183.77015234274307" />
+      <entry key="D1" value="290.71706115316084" />
+      <entry key="W1" value="316.44386226163715" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="8.440079341230149E-301" />
-      <entry key="S30" value="9.450370669851577E-101" />
-      <entry key="S60" value="9.721315923007318E-51" />
-      <entry key="M2" value="9.87159314582752E-26" />
-      <entry key="M5" value="1.0620664951433116E-10" />
-      <entry key="M10" value="1.2573896352097872E-5" />
-      <entry key="M15" value="6.527188337056659E-4" />
-      <entry key="M30" value="0.03578396364759009" />
-      <entry key="H1" value="0.2864769922126118" />
-      <entry key="H2" value="0.8754472880747971" />
-      <entry key="H4" value="1.5913392815855594" />
-      <entry key="D1" value="2.6914654754210035" />
-      <entry key="W1" value="2.953629737522258" />
+      <entry key="S10" value="4.387978816875651E-301" />
+      <entry key="S30" value="7.598971939023349E-101" />
+      <entry key="S60" value="8.717220989698223E-51" />
+      <entry key="M2" value="9.347893313471074E-26" />
+      <entry key="M5" value="1.0391597294990964E-10" />
+      <entry key="M10" value="1.243755963178477E-5" />
+      <entry key="M15" value="6.479920495261231E-4" />
+      <entry key="M30" value="0.03565416012535873" />
+      <entry key="H1" value="0.28595693375334846" />
+      <entry key="H2" value="0.8746523017516924" />
+      <entry key="H4" value="1.59061657656547" />
+      <entry key="D1" value="2.6912617158361574" />
+      <entry key="W1" value="2.9535977926366765" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3591252137908967" />
-      <entry key="MS500" value="3.246626262294164" />
-      <entry key="S2" value="5.337313166183404" />
-      <entry key="S5" value="6.222996259979444" />
-      <entry key="S10" value="6.589246195759309" />
-      <entry key="S30" value="6.857743661133409" />
-      <entry key="S60" value="6.928193350522914" />
-      <entry key="M2" value="6.9797462601351485" />
-      <entry key="M5" value="8.266453347785799" />
-      <entry key="M10" value="13.021924982035085" />
-      <entry key="M15" value="17.605668539106876" />
-      <entry key="M30" value="28.7211020652853" />
-      <entry key="H1" value="53.77834742585335" />
-      <entry key="H2" value="107.96102996559895" />
-      <entry key="H4" value="176.44156325835058" />
-      <entry key="D1" value="284.4299085256047" />
-      <entry key="W1" value="310.4008227045206" />
+      <entry key="MS100" value="1.4691549248790527" />
+      <entry key="MS500" value="2.141545816599638" />
+      <entry key="S2" value="4.786528440082945" />
+      <entry key="S5" value="8.192600115363911" />
+      <entry key="S10" value="10.985607737102018" />
+      <entry key="S30" value="13.978546317330894" />
+      <entry key="S60" value="14.936792703587123" />
+      <entry key="M2" value="15.469491012150245" />
+      <entry key="M5" value="17.03166483101198" />
+      <entry key="M10" value="21.85239632045349" />
+      <entry key="M15" value="26.45926536560331" />
+      <entry key="M30" value="37.607454713430755" />
+      <entry key="H1" value="62.67598614310709" />
+      <entry key="H2" value="116.86062371251548" />
+      <entry key="H4" value="185.3602484879145" />
+      <entry key="D1" value="293.4081781695735" />
+      <entry key="W1" value="319.39743738005245" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -113,33 +123,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.create_db.executor": "Run",
-    "Python.models.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHELLCHECK.PATH": "/home/stark/.local/share/JetBrains/PyCharm2026.1/Shell Script/shellcheck",
-    "Shell Script.recreate_db.sh.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/stark/Projects/edge-cloud-agentic-triage/backend/app",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.create_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/stark/.local/share/JetBrains/PyCharm2026.1/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.recreate_db.sh.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/stark/Projects/edge-cloud-agentic-triage/backend/app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/app" />
@@ -238,7 +253,13 @@
       <workItem from="1782385159592" duration="3047000" />
       <workItem from="1782390207023" duration="7071000" />
       <workItem from="1782455161029" duration="5264000" />
-      <workItem from="1782463157442" duration="1415000" />
+      <workItem from="1782463157442" duration="1584000" />
+      <workItem from="1782467203309" duration="3668000" />
+      <workItem from="1782471678296" duration="149000" />
+      <workItem from="1782472648209" duration="630000" />
+      <workItem from="1782473787396" duration="16000" />
+      <workItem from="1782477324724" duration="1102000" />
+      <workItem from="1782480300412" duration="408000" />
     </task>
     <task id="LOCAL-00001" summary="Base environment has been initialized by installing and setup of postgres, celery.&#10;Created connection: backend with postgres.">
       <option name="closed" value="true" />
@@ -280,7 +301,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782464340666</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: enhance triage pipeline with urgency assignment agent and complexity improvements">
+      <option name="closed" value="true" />
+      <created>1782464738553</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1782464738553</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -303,7 +332,8 @@
     <MESSAGE value="Implemented The required problem statement." />
     <MESSAGE value="commit for push" />
     <MESSAGE value="feat: add OCR agent for image handling and enhance triage pipeline with file support" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add OCR agent for image handling and enhance triage pipeline with file support" />
+    <MESSAGE value="feat: enhance triage pipeline with urgency assignment agent and complexity improvements" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: enhance triage pipeline with urgency assignment agent and complexity improvements" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

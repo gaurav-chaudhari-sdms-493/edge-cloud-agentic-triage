@@ -7,6 +7,10 @@
     "keywords": ["book appointment", "schedule appointment", "make appointment", "see a doctor"],
     "answer": "You can book an appointment by calling our scheduling department at (555) 123-4567 or through our online patient portal."
   },
+  "appointment": {
+    "keywords": ["appointment"],
+    "answer": "To schedule, change, or cancel an appointment, please contact our scheduling department at (555) 123-4567 or use our online patient portal."
+  },
   "departments": {
     "keywords": ["departments", "which department", "find department"],
     "answer": "We have various departments including Cardiology, Oncology, Pediatrics, Emergency, and more. Please visit our website or call our main line for a full list."

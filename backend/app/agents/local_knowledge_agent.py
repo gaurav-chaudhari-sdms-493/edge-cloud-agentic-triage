@@ -1,13 +1,10 @@
 import json
 import os
-from app.services.llm_service import generate
 from app.agents.base import AgentState
 
 class LocalKnowledgeAgent:
     """
     Handles simple, non-medical queries using a deterministic JSON lookup.
-    If no direct match is found, it falls back to a lightweight LLM (TinyLlama)
-    with a robust, structured prompt.
     """
 
     def __init__(self):
@@ -18,20 +15,15 @@ class LocalKnowledgeAgent:
     def run(self, state: AgentState) -> AgentState:
         state.current_agent = "local_knowledge"
         
-        # The IntentClassificationAgent has already done the hard work.
-        # We can directly use the classified intent to look up the answer.
+        # Directly use the classified intent to look up the answer.
+        # This agent should only handle known, deterministic queries.
         if state.intent in self.knowledge_base:
             state.output = self.knowledge_base[state.intent]["answer"]
             state.model_used = "KnowledgeBase"
         else:
-            # Fallback to TinyLlama ONLY if the intent is 'other' or not in our KB
-            prompt = f"""
-You are a hospital assistant. The user asked: "{state.sanitized_content or state.content}"
-This is not a medical question. Provide a brief, helpful administrative response.
-If you cannot help, say: "Please contact our help desk for assistance."
-"""
-            llm_output = generate("tinyllama", prompt)
-            state.output = llm_output
-            state.model_used = "TinyLlama"
+            # If the intent is not in our KB, we provide a standard fallback.
+            # This avoids unpredictable LLM behavior for this route.
+            state.output = "Please contact our help desk for assistance with your request."
+            state.model_used = "Fallback"
 
         return state

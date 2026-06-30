@@ -6,6 +6,9 @@ HEALTHCARE_KEYWORDS = {
     "appointment", "insurance", "patient", "emergency", "clinic", "cough",
     "headache", "diabetes", "blood pressure",
 
+    # Added Keywords from previous attempts
+    "dizzy", "weak",
+
     # Symptoms & Conditions
     "ache", "acne", "aids", "allergy", "alzheimer's", "anemia", "angina", "anxiety",
     "appendicitis", "arthritis", "asthma", "autism", "back pain", "bacteria",
@@ -113,7 +116,23 @@ HEALTHCARE_KEYWORDS = {
     "remission", "screening", "secondary care", "side effect", "specialist",
     "stable", "sterile", "symptomatic", "syndrome", "terminal", "tertiary care",
     "triage", "urgent care", "vital signs", "vitals", "waiting list", "wellness",
-    "workers compensation", "wound"
+    "workers compensation", "wound",
+
+    # Keywords from the conflicting file
+    "medical", "disease",
+    "vomiting", "nausea", "diarrhea",
+    "dizziness", "dizzy",
+    "weakness", "weak",
+    "fatigue", "tired",
+    "swelling", "rash",
+    "injury", "fracture", "burn",
+    "infection", "allergy",
+    "pregnancy", "pregnant",
+    "vision", "hearing",
+    "stomach", "abdomen",
+    "back pain", "joint pain",
+    "emergency", "ambulance",
+    "prescription", "pharmacy"
 }
 
 

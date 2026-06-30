@@ -16,12 +16,26 @@ from app.agents.audit_logger_agent import AuditLoggerAgent
 from app.core.database import SessionLocal
 from app.db.models import Request
 
+# The main pipeline of agents that run in sequence.
 PIPELINE = [
-    ValidationAgent, DomainClassificationAgent, OCRAgent, PIIDetectionAgent, PIISanitizationAgent,
-    IntentClassificationAgent, MedicalComplexityAgent, UrgencyAssignmentAgent, RouterAgent,
+    ValidationAgent,
+    DomainClassificationAgent,
+    OCRAgent,
+    PIIDetectionAgent,
+    PIISanitizationAgent,
+    IntentClassificationAgent,
+    MedicalComplexityAgent,
+    UrgencyAssignmentAgent,
+    RouterAgent,
 ]
-# Add the final routed agent to the pipeline for progress calculation
-TOTAL_AGENTS = len(PIPELINE) + 1
+
+# Map route names to the final agent classes that can be called.
+ROUTED_AGENTS = {
+    "local_knowledge": LocalKnowledgeAgent,
+    "medical_reasoning": MedicalReasoningAgent,
+}
+
+TOTAL_AGENTS = len(PIPELINE) + 1  # +1 for the final routed agent
 
 def run_pipeline(req):
     state = AgentState(request_id=req.id, content=req.content, input_type=req.input_type)
@@ -36,28 +50,34 @@ def run_pipeline(req):
         db.commit()
 
     try:
+        # Run the main sequential pipeline
         for i, agent_cls in enumerate(PIPELINE):
             agent_name = agent_cls.__name__.replace('Agent', '').lower()
             update_progress(agent_name, i)
             state = agent_cls().run(state)
+            # If validation fails, we stop early.
             if state.validation_errors:
                 state.route = "validation_failed"
                 break
-            if agent_cls == DomainClassificationAgent and not state.supported_domain:
-                state.output = "Only healthcare-related questions are supported."
-                break
+        
+        # If the pipeline completed without validation errors, run the final routed agent
+        if not state.validation_errors:
+            routed_agent_cls = ROUTED_AGENTS.get(state.route)
+            if routed_agent_cls:
+                agent_name = routed_agent_cls.__name__.replace('Agent', '').lower()
+                update_progress(agent_name, len(PIPELINE))
+                state = routed_agent_cls().run(state)
+            else:
+                # If the router returns an unknown route, handle it gracefully
+                state.output = "The system could not determine an appropriate route for your request."
 
+        # Set human review flag for high complexity or emergency cases
         if state.complexity >= 0.8 or state.intent == "emergency":
             state.requires_human_review = True
 
-        if not state.validation_errors and state.supported_domain:
-            routed_agent_cls = LocalKnowledgeAgent if state.route == "local_knowledge" else MedicalReasoningAgent
-            agent_name = routed_agent_cls.__name__.replace('Agent', '').lower()
-            update_progress(agent_name, len(PIPELINE))
-            state = routed_agent_cls().run(state)
-
+        # Finalize and audit the results
         final_output = FormatterAgent().run(state)
-        AuditLoggerAgent().run(state) # AuditLogger doesn't need progress update
+        AuditLoggerAgent().run(state)
 
         return final_output
     finally:

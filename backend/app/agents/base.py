@@ -28,3 +28,8 @@ class AgentState:
     
     # New field for human review flag
     requires_human_review: bool = False
+
+    # Domain classification fields
+    domain: str = "unknown"
+    supported_domain: bool = False
+    domain_confidence: float = 0.0

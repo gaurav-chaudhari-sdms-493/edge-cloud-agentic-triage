@@ -1,6 +1,7 @@
 import time
 from app.agents.base import AgentState
 from app.agents.validation_agent import ValidationAgent
+from app.agents.domain_classification_agent import DomainClassificationAgent
 from app.agents.ocr_agent import OCRAgent
 from app.agents.pii_detection_agent import PIIDetectionAgent
 from app.agents.pii_sanitization_agent import PIISanitizationAgent
@@ -16,7 +17,7 @@ from app.core.database import SessionLocal
 from app.db.models import Request
 
 PIPELINE = [
-    ValidationAgent, OCRAgent, PIIDetectionAgent, PIISanitizationAgent,
+    ValidationAgent, DomainClassificationAgent, OCRAgent, PIIDetectionAgent, PIISanitizationAgent,
     IntentClassificationAgent, MedicalComplexityAgent, UrgencyAssignmentAgent, RouterAgent,
 ]
 # Add the final routed agent to the pipeline for progress calculation
@@ -42,11 +43,14 @@ def run_pipeline(req):
             if state.validation_errors:
                 state.route = "validation_failed"
                 break
+            if agent_cls == DomainClassificationAgent and not state.supported_domain:
+                state.output = "Only healthcare-related questions are supported."
+                break
 
         if state.complexity >= 0.8 or state.intent == "emergency":
             state.requires_human_review = True
 
-        if not state.validation_errors:
+        if not state.validation_errors and state.supported_domain:
             routed_agent_cls = LocalKnowledgeAgent if state.route == "local_knowledge" else MedicalReasoningAgent
             agent_name = routed_agent_cls.__name__.replace('Agent', '').lower()
             update_progress(agent_name, len(PIPELINE))

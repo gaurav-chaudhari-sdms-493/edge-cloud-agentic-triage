@@ -4,11 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="feat: integrate mobile UI for triage pipeline and improve backend progress tracking">
+    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="feat: add support for raw response handling in TriageResult model and enhance ResultScreen UI for unstructured data">
+      <change afterPath="$PROJECT_DIR$/backend/app/agents/domain_classification_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/lib/models/response.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/models/response.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/lib/screens/result/result_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/screens/result/result_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/services/orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/orchestrator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +16,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="10337" />
+    <option name="cachedIndexableFilesCount" value="10329" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
@@ -47,61 +47,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.503502641914733" />
-      <entry key="MS500" value="2.1520947278538873" />
-      <entry key="S2" value="4.797289451083949" />
-      <entry key="S5" value="8.203761456695819" />
-      <entry key="S10" value="10.99427410858925" />
-      <entry key="S30" value="13.982551699545308" />
-      <entry key="S60" value="14.938974275515719" />
-      <entry key="M2" value="15.470641309630594" />
-      <entry key="M5" value="17.03238652724029" />
-      <entry key="M10" value="21.853113958082567" />
-      <entry key="M15" value="26.459298685725994" />
-      <entry key="M30" value="37.572343595321904" />
-      <entry key="H1" value="62.39057405539715" />
-      <entry key="H2" value="115.98657721034941" />
-      <entry key="H4" value="183.77015234274307" />
-      <entry key="D1" value="290.71706115316084" />
-      <entry key="W1" value="316.44386226163715" />
+      <entry key="MS100" value="1.4721938895051359" />
+      <entry key="MS500" value="3.9340875881012303" />
+      <entry key="S2" value="7.644600932050443" />
+      <entry key="S5" value="11.468532385276793" />
+      <entry key="S10" value="14.515688362640931" />
+      <entry key="S30" value="17.78335155159904" />
+      <entry key="S60" value="18.833011851659883" />
+      <entry key="M2" value="19.415892501314996" />
+      <entry key="M5" value="21.00848347983957" />
+      <entry key="M10" value="25.838096710971868" />
+      <entry key="M15" value="30.447335433397207" />
+      <entry key="M30" value="41.564007911041905" />
+      <entry key="H1" value="66.38377794680035" />
+      <entry key="H2" value="119.98034130104406" />
+      <entry key="H4" value="187.76523984322856" />
+      <entry key="D1" value="294.7157705032476" />
+      <entry key="W1" value="320.44366166604743" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="4.387978816875651E-301" />
-      <entry key="S30" value="7.598971939023349E-101" />
-      <entry key="S60" value="8.717220989698223E-51" />
-      <entry key="M2" value="9.347893313471074E-26" />
-      <entry key="M5" value="1.0391597294990964E-10" />
-      <entry key="M10" value="1.243755963178477E-5" />
-      <entry key="M15" value="6.479920495261231E-4" />
-      <entry key="M30" value="0.03565416012535873" />
-      <entry key="H1" value="0.28595693375334846" />
-      <entry key="H2" value="0.8746523017516924" />
-      <entry key="H4" value="1.59061657656547" />
-      <entry key="D1" value="2.6912617158361574" />
-      <entry key="W1" value="2.9535977926366765" />
+      <entry key="S10" value="4.2238440255727E-301" />
+      <entry key="S30" value="7.50301746765948E-101" />
+      <entry key="S60" value="8.662008673591493E-51" />
+      <entry key="M2" value="9.318242884980647E-26" />
+      <entry key="M5" value="1.0378400353565755E-10" />
+      <entry key="M10" value="1.2429659504085707E-5" />
+      <entry key="M15" value="6.477176247362561E-4" />
+      <entry key="M30" value="0.03564660955313392" />
+      <entry key="H1" value="0.28592665323632643" />
+      <entry key="H2" value="0.8746059912378406" />
+      <entry key="H4" value="1.5905744665487604" />
+      <entry key="D1" value="2.6912498409519534" />
+      <entry key="W1" value="2.9535959308599984" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.4691549248790527" />
-      <entry key="MS500" value="2.141545816599638" />
-      <entry key="S2" value="4.786528440082945" />
-      <entry key="S5" value="8.192600115363911" />
-      <entry key="S10" value="10.985607737102018" />
-      <entry key="S30" value="13.978546317330894" />
-      <entry key="S60" value="14.936792703587123" />
-      <entry key="M2" value="15.469491012150245" />
-      <entry key="M5" value="17.03166483101198" />
-      <entry key="M10" value="21.85239632045349" />
-      <entry key="M15" value="26.45926536560331" />
-      <entry key="M30" value="37.607454713430755" />
-      <entry key="H1" value="62.67598614310709" />
-      <entry key="H2" value="116.86062371251548" />
-      <entry key="H4" value="185.3602484879145" />
-      <entry key="D1" value="293.4081781695735" />
-      <entry key="W1" value="319.39743738005245" />
+      <entry key="MS100" value="1.3889062853370229" />
+      <entry key="MS500" value="3.827583380677016" />
+      <entry key="S2" value="7.595675031851468" />
+      <entry key="S5" value="11.440610915453403" />
+      <entry key="S10" value="14.498277307070506" />
+      <entry key="S30" value="17.7763100141559" />
+      <entry key="S60" value="18.82929264618651" />
+      <entry key="M2" value="19.413968097254656" />
+      <entry key="M5" value="21.007451109842997" />
+      <entry key="M10" value="25.837223652565182" />
+      <entry key="M15" value="30.447198191537108" />
+      <entry key="M30" value="41.59905961659938" />
+      <entry key="H1" value="66.66913382093335" />
+      <entry key="H2" value="120.8543285288283" />
+      <entry key="H4" value="189.3552873940479" />
+      <entry key="D1" value="297.40687456237595" />
+      <entry key="W1" value="323.39723476798014" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -113,38 +113,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.create_db.executor": "Run",
-    "Python.models.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "SHELLCHECK.PATH": "/home/stark/.local/share/JetBrains/PyCharm2026.1/Shell Script/shellcheck",
-    "Shell Script.recreate_db.sh.executor": "Run",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "main",
-    "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/stark/Downloads/linkedin-badges-1.0.1.zip",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "ml.llm.AcpAgentsConfigurable",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.create_db.executor&quot;: &quot;Run&quot;,
+    &quot;Python.models.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/home/stark/.local/share/JetBrains/PyCharm2026.1/Shell Script/shellcheck&quot;,
+    &quot;Shell Script.recreate_db.sh.executor&quot;: &quot;Run&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/stark/Downloads/linkedin-badges-1.0.1.zip&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.AcpAgentsConfigurable&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/app" />
@@ -255,6 +255,8 @@
       <workItem from="1782713342799" duration="458000" />
       <workItem from="1782717129611" duration="1650000" />
       <workItem from="1782729028346" duration="167000" />
+      <workItem from="1782739350937" duration="340000" />
+      <workItem from="1782794610504" duration="1247000" />
     </task>
     <task id="LOCAL-00001" summary="Base environment has been initialized by installing and setup of postgres, celery.&#10;Created connection: backend with postgres.">
       <option name="closed" value="true" />

@@ -5,14 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="feat: enhance RouterAgent logic, add SimpleMedicalAgent, and improve triage pipeline routing">
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/language_detection_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/response_translation_agent.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/app/agents/translation_agent.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/core/llm_config.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/audit_logger_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/audit_logger_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/formatter_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/formatter_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/medical_reasoning_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/medical_reasoning_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/response_translation_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/response_translation_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/services/llm_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/llm_service.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/services/orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/orchestrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/backend/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

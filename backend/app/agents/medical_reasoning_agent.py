@@ -2,6 +2,7 @@ import json
 from app.services.llm_service import generate
 from app.agents.base import AgentState
 
+
 class MedicalReasoningAgent:
     """
     Uses a powerful LLM (Qwen) to analyze complex medical queries.
@@ -33,8 +34,8 @@ Example of a perfect response:
 """
 
         llm_output_str = generate(
-            "qwen2.5:7b",
-            prompt
+            profile_name="medical_reasoning",
+            prompt=prompt
         )
 
         # Attempt to parse the LLM output string into a JSON object

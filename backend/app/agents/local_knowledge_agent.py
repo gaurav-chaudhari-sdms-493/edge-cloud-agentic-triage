@@ -2,6 +2,7 @@ import json
 import os
 from app.agents.base import AgentState
 
+
 class LocalKnowledgeAgent:
     """
     Handles simple, non-medical queries using a deterministic JSON lookup.

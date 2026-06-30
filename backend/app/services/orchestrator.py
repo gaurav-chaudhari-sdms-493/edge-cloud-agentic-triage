@@ -24,7 +24,7 @@ PIPELINE = [
     ValidationAgent,
     LanguageDetectionAgent,
     TranslationAgent,
-    DomainClassificationAgent,
+    DomainClassificationAgent,  # Correctly placed
     OCRAgent,
     PIIDetectionAgent,
     PIISanitizationAgent,
@@ -40,10 +40,12 @@ ROUTED_AGENTS = {
     "medical_reasoning": MedicalReasoningAgent,
 }
 
-TOTAL_AGENTS = len(PIPELINE) + 1  # +1 for the final routed agent
+# +3 for routed agent, response translation, and formatter
+TOTAL_AGENTS = len(PIPELINE) + 3
 
 
 def run_pipeline(req):
+    start_time = time.time()  # Start latency timer
     state = AgentState(request_id=req.id, content=req.content, input_type=req.input_type)
     db = SessionLocal()
 
@@ -60,33 +62,47 @@ def run_pipeline(req):
         for i, agent_cls in enumerate(PIPELINE):
             agent_name = agent_cls.__name__.replace('Agent', '').lower()
             update_progress(agent_name, i)
+            
             state = agent_cls().run(state)
-            # If validation fails, we stop early.
+
+            # Stop early if validation fails or domain is out of scope
             if state.validation_errors:
                 state.route = "validation_failed"
                 break
+            if state.route == "out_of_domain":
+                # Domain agent has set the output, so we can stop.
+                break
         
-        # If the pipeline completed without validation errors, run the final routed agent
-        if not state.validation_errors:
+        # If the pipeline completed, run the final routed agent
+        if not state.validation_errors and state.route not in ["out_of_domain", "validation_failed"]:
             routed_agent_cls = ROUTED_AGENTS.get(state.route)
             if routed_agent_cls:
                 agent_name = routed_agent_cls.__name__.replace('Agent', '').lower()
                 update_progress(agent_name, len(PIPELINE))
                 state = routed_agent_cls().run(state)
             else:
-                # If the router returns an unknown route, handle it gracefully
                 state.output = "The system could not determine an appropriate route for your request."
 
-        # Set human review flag for high complexity or emergency cases
+        # Set human review flag
         if state.complexity >= 0.8 or state.intent == "emergency":
             state.requires_human_review = True
 
-        # Translate the response if needed
+        # Translate the response
+        update_progress("response_translation", len(PIPELINE) + 1)
         state = ResponseTranslationAgent().run(state)
 
-        # Finalize and audit the results
+        # Finalize and audit
+        update_progress("formatter", len(PIPELINE) + 2)
+        # The FormatterAgent should not add its own name to the path
         final_output = FormatterAgent().run(state)
-        AuditLoggerAgent().run(state)
+        
+        # Calculate and set latency
+        end_time = time.time()
+        latency_ms = int((end_time - start_time) * 1000)
+        final_output['latency_ms'] = latency_ms
+        
+        # The AuditLoggerAgent runs last and does not update progress
+        AuditLoggerAgent(final_output).run(state)
 
         return final_output
     finally:

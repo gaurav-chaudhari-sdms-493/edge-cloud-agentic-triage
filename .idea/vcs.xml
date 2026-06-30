@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backend/models/opus-mt-en-hi" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backend/models/opus-mt-en-mr" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backend/models/opus-mt-hi-en" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/backend/models/opus-mt-mr-en" vcs="Git" />
   </component>
 </project>

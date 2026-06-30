@@ -20,12 +20,13 @@ from app.core.database import SessionLocal
 from app.db.models import Request
 
 # The main pipeline of agents that run in sequence.
+# OCR is now placed before language detection and translation.
 PIPELINE = [
     ValidationAgent,
+    OCRAgent,
     LanguageDetectionAgent,
     TranslationAgent,
-    DomainClassificationAgent,  # Correctly placed
-    OCRAgent,
+    DomainClassificationAgent,
     PIIDetectionAgent,
     PIISanitizationAgent,
     IntentClassificationAgent,

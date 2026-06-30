@@ -2,7 +2,6 @@ from deep_translator import GoogleTranslator
 from app.agents.base import AgentState
 import json
 
-
 class ResponseTranslationAgent:
     """
     Translates the agent's final response back to the user's original language.
@@ -18,13 +17,20 @@ class ResponseTranslationAgent:
             return state
 
         try:
+            print("=" * 60)
+            print("RESPONSE TRANSLATION DEBUG")
+            print(f"TRANSLATING TO: {state.language}")
+            print(f"ORIGINAL RESPONSE: {state.output}")
+
             translator = GoogleTranslator(source='en', target=state.language)
 
             if isinstance(state.output, dict):
                 # It's a dictionary, translate only string values
                 translated_output = {}
                 for key, value in state.output.items():
-                    if isinstance(value, str):
+                    if key == "risk_level":
+                        translated_output[key] = value
+                    elif isinstance(value, str):
                         translated_output[key] = translator.translate(value)
                     else:
                         # Keep non-string values (like numbers, booleans) as is
@@ -44,6 +50,9 @@ class ResponseTranslationAgent:
                 translated = translator.translate(response_to_translate)
                 state.output = translated
                 state.translated_response = translated
+
+            print(f"TRANSLATED RESPONSE: {state.output}")
+            print("=" * 60)
 
         except Exception as e:
             state.validation_errors.append(f"Response translation failed: {e}")

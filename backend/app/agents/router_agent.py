@@ -10,11 +10,15 @@ class RouterAgent:
         state.current_agent = "router"
         state.execution_path.append("router")
 
-        # 1. High complexity queries are always medical
-        if state.complexity > 0.8:
+        # 1. Prioritize the medical_reasoning intent
+        if state.intent == "medical_reasoning":
             state.route = "medical_reasoning"
 
-        # 2. Route based on the domain (healthcare vs. other)
+        # 2. High complexity queries are always medical
+        elif state.complexity > 0.8:
+            state.route = "medical_reasoning"
+
+        # 3. Route based on the domain (healthcare vs. other)
         elif state.domain == "healthcare":
             # These are simple, non-medical administrative intents.
             admin_intents = {
@@ -34,7 +38,7 @@ class RouterAgent:
                 # is the medical reasoning agent.
                 state.route = "medical_reasoning"
         else:
-            # 3. If the domain is not healthcare, route to local knowledge
+            # 4. If the domain is not healthcare, route to local knowledge
             state.route = "local_knowledge"
 
         print("=" * 60)

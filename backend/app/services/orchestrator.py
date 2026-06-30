@@ -1,6 +1,9 @@
 import time
 from app.agents.base import AgentState
 from app.agents.validation_agent import ValidationAgent
+from app.agents.language_detection_agent import LanguageDetectionAgent
+from app.agents.translation_agent import TranslationAgent
+from app.agents.response_translation_agent import ResponseTranslationAgent
 from app.agents.domain_classification_agent import DomainClassificationAgent
 from app.agents.ocr_agent import OCRAgent
 from app.agents.pii_detection_agent import PIIDetectionAgent
@@ -19,6 +22,8 @@ from app.db.models import Request
 # The main pipeline of agents that run in sequence.
 PIPELINE = [
     ValidationAgent,
+    LanguageDetectionAgent,
+    TranslationAgent,
     DomainClassificationAgent,
     OCRAgent,
     PIIDetectionAgent,
@@ -36,6 +41,7 @@ ROUTED_AGENTS = {
 }
 
 TOTAL_AGENTS = len(PIPELINE) + 1  # +1 for the final routed agent
+
 
 def run_pipeline(req):
     state = AgentState(request_id=req.id, content=req.content, input_type=req.input_type)
@@ -74,6 +80,9 @@ def run_pipeline(req):
         # Set human review flag for high complexity or emergency cases
         if state.complexity >= 0.8 or state.intent == "emergency":
             state.requires_human_review = True
+
+        # Translate the response if needed
+        state = ResponseTranslationAgent().run(state)
 
         # Finalize and audit the results
         final_output = FormatterAgent().run(state)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List, Dict, Any
 
+
 @dataclass
 class AgentState:
     # Existing fields
@@ -10,7 +11,7 @@ class AgentState:
     route: str = None
     complexity: float = 0
     confidence: float = 0
-    output: Any = None # Can be string or dict
+    output: Any = None  # Can be string or dict
     current_agent: str = None
     latency_ms: int = 0
     estimated_cost: int = 0
@@ -33,3 +34,10 @@ class AgentState:
     domain: str = "unknown"
     supported_domain: bool = False
     domain_confidence: float = 0.0
+
+    # Multilingual support fields
+    language: str = "en"
+    translation_required: bool = False
+    original_content: str = ""
+    translated_content: str = ""
+    translated_response: str = ""

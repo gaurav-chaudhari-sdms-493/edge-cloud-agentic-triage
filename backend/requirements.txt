@@ -21,3 +21,6 @@ httpx
 python-dotenv
 
 loguru
+
+deep-translator
+langdetect

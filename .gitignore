@@ -1,0 +1,7 @@
+/backend/uploads/
+/.venv/
+/backend/venv/
+/backend/.env
+/backend/key.txt
+/backend/key.txt.pub
+/backend/recreate_db.sh

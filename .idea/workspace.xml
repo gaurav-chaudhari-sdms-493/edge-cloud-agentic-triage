@@ -4,17 +4,35 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="chore: update workspace settings and default GitHub account configuration">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    <list default="true" id="a98058be-b01f-447b-8eee-de5ce997225f" name="Changes" comment="refactor: improve agent logic, add EasyOCR for multilingual support, and refine pipeline execution">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/agents/postprocessing/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/app/agents/reasoning/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/domain_classification_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/domain_classification_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/intent_classification_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/intent_classification_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/ocr_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/ocr_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/response_translation_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/response_translation_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/router_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/router_agent.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/app/agents/translation_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/translation_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/audit_logger_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/postprocessing/audit_logger_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/complexity_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/domain_classification_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/domain_classification_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/formatter_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/postprocessing/formatter_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/heavy_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/input_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/intent_classification_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/reasoning/intent_classification_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/language_detection_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/language_detection_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/light_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/local_knowledge_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/reasoning/local_knowledge_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/medical_complexity_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/reasoning/medical_complexity_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/medical_reasoning_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/reasoning/medical_reasoning_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/ocr_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/ocr_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/pii_detection_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/pii_detection_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/pii_sanitization_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/pii_sanitization_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/privacy_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/response_translation_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/postprocessing/response_translation_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/router_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/reasoning/router_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/simple_medical_agent.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/translation_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/translation_agent.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/app/agents/validation_agent.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/agents/preprocessing/validation_agent.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/app/services/orchestrator.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/app/services/orchestrator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mobile/lib/core/api/api_constants.dart" beforeDir="false" afterPath="$PROJECT_DIR$/mobile/lib/core/api/api_constants.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,61 +74,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0001058253235846" />
-      <entry key="MS500" value="1.2484016387547963" />
-      <entry key="S2" value="2.8207113335658196" />
-      <entry key="S5" value="3.8945783810925803" />
-      <entry key="S10" value="4.397701374524885" />
-      <entry key="S30" value="4.786975260245966" />
-      <entry key="S60" value="4.891870252920174" />
-      <entry key="M2" value="4.945524109639221" />
-      <entry key="M5" value="4.982321091105215" />
-      <entry key="M10" value="5.299189733331486" />
-      <entry key="M15" value="6.352698032756723" />
-      <entry key="M30" value="12.742555321303616" />
-      <entry key="H1" value="34.821498800748806" />
-      <entry key="H2" value="89.53178214604156" />
-      <entry key="H4" value="183.10484427878976" />
-      <entry key="D1" value="401.29160457179574" />
-      <entry key="W1" value="467.66724396511665" />
+      <entry key="MS100" value="1.0000088248305046" />
+      <entry key="MS500" value="1.0975306858017062" />
+      <entry key="S2" value="1.5810445888590148" />
+      <entry key="S5" value="2.60282095241633" />
+      <entry key="S10" value="4.822892647144192" />
+      <entry key="S30" value="10.014327683949078" />
+      <entry key="S60" value="13.590352551797782" />
+      <entry key="M2" value="17.134667651252443" />
+      <entry key="M5" value="20.64651946176517" />
+      <entry key="M10" value="22.224659068490997" />
+      <entry key="M15" value="22.961188052213018" />
+      <entry key="M30" value="25.595036742315685" />
+      <entry key="H1" value="38.2381614469572" />
+      <entry key="H2" value="81.7297563594037" />
+      <entry key="H4" value="171.15597944700482" />
+      <entry key="D1" value="410.95845850991174" />
+      <entry key="W1" value="489.24400240370403" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="9.809532023388324E-304" />
-      <entry key="S30" value="1.3373715394453421E-101" />
-      <entry key="S60" value="5.023385556687015E-51" />
-      <entry key="M2" value="9.946780830791035E-26" />
-      <entry key="M5" value="1.5096642682145023E-10" />
-      <entry key="M10" value="1.73707924240629E-5" />
-      <entry key="M15" value="8.45007291643153E-4" />
-      <entry key="M30" value="0.041165080989045845" />
-      <entry key="H1" value="0.29814151985668785" />
-      <entry key="H2" value="0.9319831223359063" />
-      <entry key="H4" value="1.941566263150383" />
-      <entry key="D1" value="4.197735476253443" />
-      <entry key="W1" value="4.8745120643217925" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="4.7667061313667155E-147" />
+      <entry key="S60" value="9.483740529404967E-74" />
+      <entry key="M2" value="4.321894130184964E-37" />
+      <entry key="M5" value="4.3060295531592526E-15" />
+      <entry key="M10" value="9.277221925286279E-8" />
+      <entry key="M15" value="2.581820232975628E-5" />
+      <entry key="M30" value="0.0071955127304049555" />
+      <entry key="H1" value="0.12464901383422722" />
+      <entry key="H2" value="0.6026168077495916" />
+      <entry key="H4" value="1.5612369222166256" />
+      <entry key="D1" value="4.047944043483598" />
+      <entry key="W1" value="4.849274658399985" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.006036402611252892" />
-      <entry key="MS500" value="0.5733287782661352" />
-      <entry key="S2" value="2.5552223405807424" />
-      <entry key="S5" value="3.775386707616412" />
-      <entry key="S10" value="4.335600652409488" />
-      <entry key="S30" value="4.7656811645071935" />
-      <entry key="S60" value="4.881146476610084" />
-      <entry key="M2" value="4.940142845246038" />
-      <entry key="M5" value="4.980163712833317" />
-      <entry key="M10" value="5.298119019401701" />
-      <entry key="M15" value="6.352795924801838" />
-      <entry key="M30" value="12.783263719327076" />
-      <entry key="H1" value="35.11923428417513" />
-      <entry key="H2" value="90.46330973194497" />
-      <entry key="H4" value="185.04593795258123" />
-      <entry key="D1" value="405.4891574428003" />
-      <entry key="W1" value="472.54172527098564" />
+      <entry key="MS100" value="0.8122608032251005" />
+      <entry key="MS500" value="1.055852938807574" />
+      <entry key="S2" value="1.5693148253270268" />
+      <entry key="S5" value="2.5973896665787195" />
+      <entry key="S10" value="4.819413697831211" />
+      <entry key="S30" value="10.012533574556771" />
+      <entry key="S60" value="13.589209196516569" />
+      <entry key="M2" value="17.13396309819732" />
+      <entry key="M5" value="20.646182608217227" />
+      <entry key="M10" value="22.224472603865074" />
+      <entry key="M15" value="22.96106749723498" />
+      <entry key="M30" value="25.60208904722289" />
+      <entry key="H1" value="38.36260859308982" />
+      <entry key="H2" value="82.33206245756041" />
+      <entry key="H4" value="172.71682824670697" />
+      <entry key="D1" value="415.0062251091555" />
+      <entry key="W1" value="494.0932462692296" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -157,6 +175,11 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/backend/app" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/backend/app/agents/preprocessing" />
+      <recent name="$PROJECT_DIR$/backend/app/agents/postprocessing" />
+      <recent name="$PROJECT_DIR$/backend/app/agents/reasoning" />
     </key>
   </component>
   <component name="RunManager" selected="Shell Script.recreate_db.sh">
@@ -267,7 +290,7 @@
       <workItem from="1782739350937" duration="340000" />
       <workItem from="1782794610504" duration="5614000" />
       <workItem from="1782808897730" duration="114000" />
-      <workItem from="1782809181979" duration="13420000" />
+      <workItem from="1782809181979" duration="16667000" />
     </task>
     <task id="LOCAL-00001" summary="Base environment has been initialized by installing and setup of postgres, celery.&#10;Created connection: backend with postgres.">
       <option name="closed" value="true" />
@@ -357,7 +380,15 @@
       <option name="project" value="LOCAL" />
       <updated>1782805705064</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="refactor: improve agent logic, add EasyOCR for multilingual support, and refine pipeline execution">
+      <option name="closed" value="true" />
+      <created>1782823103855</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1782823103855</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -388,7 +419,10 @@
     <MESSAGE value="feat: add multilingual support with language detection and content translation agents" />
     <MESSAGE value="feat: implement centralized LLM configuration, enhance pipeline flexibility, and improve response translation and auditing" />
     <MESSAGE value="chore: update workspace settings and default GitHub account configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore: update workspace settings and default GitHub account configuration" />
+    <MESSAGE value="feat: integrate EasyOCR, improve language translation, and optimize pipeline flow" />
+    <MESSAGE value="refactor: enhance pipeline agents with debugging, OCR improvements, and routing updates" />
+    <MESSAGE value="refactor: improve agent logic, add EasyOCR for multilingual support, and refine pipeline execution" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: improve agent logic, add EasyOCR for multilingual support, and refine pipeline execution" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

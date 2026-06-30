@@ -9,7 +9,7 @@ class LocalKnowledgeAgent:
     """
 
     def __init__(self):
-        kb_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'hospital_kb.json')
+        kb_path = os.path.join(os.path.dirname(__file__), '../..', 'data', 'hospital_kb.json')
         with open(kb_path, 'r') as f:
             self.knowledge_base = json.load(f)
 
